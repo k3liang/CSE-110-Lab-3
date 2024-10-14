@@ -1,14 +1,16 @@
 export enum Label {
-  personal = "personal",
-  study = "study",
-  work = "work",
-  other = "other",
+    personal = "personal",
+    study = "study",
+    work = "work",
+    other = "other",
 }
 
 export type Note = {
-  id: number;
-  title: string;
-  content: string;
-  label: Label;
-  liked: boolean;
+    id: number;
+    title: string;
+    content: string;
+    label: Label;
+    liked: boolean;
 };
+
+export type GroceryItem = { name: string; isPurchased: boolean };
