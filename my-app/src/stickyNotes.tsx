@@ -47,12 +47,14 @@ export const StickyNotes = () => {
 
     function createNoteHandler(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        setCreateNote({
+        const noteId = notes.length + 1;
+        /*setCreateNote({
             ...createNote,
-            id: notes.length + 1,
-        });
-
-        console.log(createNote.liked);
+            id: 10,
+        });*/
+        createNote.id = noteId;
+        setCreateNote(createNote);
+        console.log(createNote.id);
         setNotes([...notes, createNote]);
     }
 
@@ -160,6 +162,7 @@ export const StickyNotes = () => {
 
                 <div>
                     <textarea
+                        placeholder="Note Content"
                         onChange={(event) =>
                             setCreateNote({
                                 ...createNote,
@@ -231,9 +234,27 @@ export const StickyNotes = () => {
                                 x
                             </button>
                         </div>
-                        <h2 contentEditable="true"> {note.title} </h2>
-                        <p contentEditable="true"> {note.content} </p>
-                        <p contentEditable="true"> {note.label} </p>
+                        <h2
+                            contentEditable="true"
+                            data-testid={"title " + note.id}
+                        >
+                            {" "}
+                            {note.title}{" "}
+                        </h2>
+                        <p
+                            contentEditable="true"
+                            data-testid={"content " + note.id}
+                        >
+                            {" "}
+                            {note.content}{" "}
+                        </p>
+                        <p
+                            contentEditable="true"
+                            data-testid={"label " + note.id}
+                        >
+                            {" "}
+                            {note.label}{" "}
+                        </p>
                     </div>
                 ))}
             </div>

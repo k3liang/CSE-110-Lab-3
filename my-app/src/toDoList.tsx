@@ -10,7 +10,7 @@ export function ToDoList() {
 
     const [numRemainingItems, setNumRemainingItems] = useState(0);
 
-    let [items, setItems] = useState(dummyGroceryList);
+    let [items, setItems] = useState(dummyGroceryList.concat([]));
 
     function handleCheckboxClick(e: React.ChangeEvent<HTMLInputElement>) {
         const checkbox: HTMLInputElement = e.target as HTMLInputElement;
@@ -34,7 +34,7 @@ export function ToDoList() {
 
     return (
         <div className="App">
-            <div className="App-body" style={{textAlign: "center"}}>
+            <div className="App-body" style={{textAlign: "center"}} data-testid="title">
                 <h1>{name}'s To Do List</h1>
                 Items bought: {numRemainingItems}
                 <form action=".">
@@ -49,6 +49,7 @@ function ListItem(item: GroceryItem, changeHandler: ChangeEventHandler) {
     return (
         <div>
             <input
+                data-testid={item.name}
                 type="checkbox"
                 onChange={changeHandler}
                 checked={item.isPurchased}
